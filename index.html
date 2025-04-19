@@ -1,205 +1,339 @@
 
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JF Sports Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JF Sports - المتجر الرياضي</title>
+  <img src="/photo_2025-04-17_13-56-59.jpg" alt="JF Sport Logo" style="display:none;">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-    body { background-color: #111; color: #fff; }
-
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+    }
     header {
-      background-color: #1c1c1c;
-      padding: 20px;
+      background-color: #131921;
+      color: white;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      flex-wrap: wrap;
     }
-
-    .logo { display: flex; align-items: center; }
-    .logo img { width: 60px; height: 60px; margin-left: 15px; }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
+    header .logo {
+      font-size: 22px;
       font-weight: bold;
-      transition: color 0.3s ease;
     }
-    nav a:hover { color: #00ffae; }
-
-    /* Slider */
-    .slider {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+    .search-bar {
+      background-color: #232f3e;
+      padding: 10px 30px;
+      text-align: center;
+    }
+    .search-bar input {
+      width: 70%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    .slider-container {
       position: relative;
+      width: 100%;
+      overflow: hidden;
     }
-
-    .slides {
+    .slider {
       display: flex;
-      width: 80%;
-      height: 100%;
-      animation: slide 9s infinite;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
     }
-
     .slide {
       width: 100%;
-      flex-shrink: 0;
-      height: 100%;
+      position: relative;
     }
-
     .slide img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
     }
-
-    @keyframes slide {
-      0% { transform: translateX(0%); }
-      33% { transform: translateX(-100%); }
-      66% { transform: translateX(-200%); }
-      100% { transform: translateX(0%); }
+    .slide-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      font-size: 24px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 10px;
     }
-
-    /* Sections */
-    section { padding: 40px 20px; text-align: center; }
-    h2 { color: #00ffae; margin-bottom: 20px; }
-    p { color: #ccc; margin-bottom: 10px; }
-
-    .category-grid, .product-grid {
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: white;
+      padding: 0 20px;
+      cursor: pointer;
+    }
+    .categories {
+      display: flex;
+      overflow-x: auto;
+      padding: 15px;
+      background-color: white;
+    }
+    .categories div {
+      margin: 0 15px;
+      text-align: center;
+    }
+    .categories img {
+      width: 50px;
+      height: 50px;
+      display: block;
+      margin: auto;
+    }
+    .section-title {
+      font-size: 24px;
+      margin: 40px 0 20px;
+      text-align: center;
+      color: #131921;
+    }
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
-      margin-top: 20px;
+      padding: 0 20px;
     }
-
-    .category-box, .product-card {
-      background-color: #1f1f1f;
-      padding: 20px;
+    .product-card {
+      background-color: white;
       border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
-
     .product-card img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
+      height: 150px;
+      object-fit: contain;
       margin-bottom: 10px;
     }
-
-    .product-card h3 { color: #00ffae; margin-bottom: 8px; }
-
-    .product-card button,
-    .cta button,
-    form button {
-      background-color: #00ffae;
-      color: #111;
-      padding: 10px 20px;
+    .product-card h3 {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    .product-card .price {
+      color: #b12704;
+      font-weight: bold;
+    }
+    .product-card button {
+      background-color: #131921;
+      color: white;
       border: none;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 5px;
       cursor: pointer;
+      margin-top: 10px;
     }
-
-    .product-card button:hover,
-    .cta button:hover,
-    form button:hover {
-      background-color: #00e09f;
-    }
-
     footer {
-      padding: 30px 20px;
+      background-color: #232f3e;
+      color: white;
       text-align: center;
-      color: #888;
-      background-color: #1c1c1c;
+      padding: 25px 10px;
+      margin-top: 40px;
     }
+    footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .slider-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.product-card {
+  flex: 0 0 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
-
   <header>
-    <div class="logo">
-      <img src="/photo_2025-03-31_19-39-49.jpg" alt="JF Sports Logo" />
-      <h2>JF Sports</h2>
-    </div>
+    <div class="logo">JF-Sport</div>
     <nav>
-      <a href="#features">مميزاتنا</a>
+      <a href="#">الرئيسية</a>
+      <a href="#products">المنتجات</a>
       <a href="#categories">الأقسام</a>
-      <a href="#featured">العروض</a>
       <a href="#contact">تواصل معنا</a>
     </nav>
   </header>
-
-  <section class="slider">
-    <div class="slides">
-      <div class="slide"><img src="/photo_2025-03-31_19-39-55.jpg" alt="Slide 1" /></div>
-      <div class="slide"><img src="/photo_2025-03-31_19-39-55.jpg" alt="Slide 2" /></div>
-      <div class="slide"><img src="/photo_2025-03-31_19-39-55.jpg" alt="Slide 3" /></div>
+  <div class="search-bar">
+    <input type="text" placeholder="ابحث عن منتج رياضي...">
+</div>
+  <div class="slider-container">
+    <div class="slider" id="mainSlider">
+      <div class="slide"><img src="/photo_2025-04-17_13-56-59.jpg" alt="عرض 1"><div class="slide-caption">خصم 50% على الأدوات</div></div>
+      <div class="slide"><img src="/photo_2025-04-17_13-56-59.jpg" alt="عرض 2"><div class="slide-caption">عروض صيفية مذهلة</div></div>
+      <div class="slide"><img src="/photo_2025-04-17_13-56-59.jpg" alt="عرض 3"><div class="slide-caption">منتجات جديدة</div></div>
     </div>
-  </section>
-
-  <section id="features">
-    <h2>مميزاتنا</h2>
-    <p>شحن سريع ودقيق حسب الوزن</p>
-    <p>منتجات أصلية 100%</p>
-    <p>دعم فني على مدار الساعة</p>
-  </section>
-
-  <section id="categories">
-    <h2>الأقسام الرئيسية</h2>
-    <div class="category-grid">
-      <div class="category-box">أدوات التمارين</div>
-      <div class="category-box">ملابس رجالية</div>
-      <div class="category-box">ملابس نسائية</div>
-      <div class="category-box">إكسسوارات</div>
+    <div class="slider-controls">
+      <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+      <span class="next" onclick="changeSlide(1)">&#10095;</span>
     </div>
-  </section>
-
-  <section id="featured">
-    <h2>منتجات مميزة</h2>
-
-<div class="product-grid">
+  </div>
+  <div class="categories">
+    <div><img src="/photo_2025-04-11_17-11-04.jpg" alt="معدات"><p>معدات</p></div>
+    <div><img src="/photo_2025-04-18_13-47-47.jpg" alt="بروتين"><p>بروتين</p></div>
+    <div><img src="/photo_2025-04-18_13-47-41.jpg" alt="مشروبات"><p>مشروبات</p></div>
+    <div><img src="/photo_2025-04-11_17-11-08.jpg" alt="ملابس"><p>ملابس</p></div>
+  </div>
+  <section id="products">
+    <h2 class="section-title">منتجات مميزة</h2>
+    <div class="grid">
       <div class="product-card">
-        <img src="/photo_2025-03-31_19-40-02.jpg" alt="منتج 1">
-        <h3>دامبل حديد 10 كجم</h3>
-        <p>500 جنيه</p>
-        <button>أضف للسلة</button>
+        <img src="/photo_2025-04-11_17-11-04.jpg" alt="منتج 1">
+        <h3>دمبل 10 كغ</h3>
+        <div class="price">$15.99</div>
+        <p>الوزن: 10 كغ</p>
+        <button>تفاصيل المنتج</button>
+        <button>أضف إلى السلة</button>
       </div>
       <div class="product-card">
-        <img src="product2.jpg" alt="منتج 2">
+        <img src="/photo_2025-04-11_17-11-08.jpg" alt="منتج 2">
         <h3>تيشيرت رياضي</h3>
-        <p>250 جنيه</p>
-        <button>أضف للسلة</button>
+        <div class="price">$19.99</div>
+        <p>الوزن: 0.3 كغ</p>
+        <button>تفاصيل المنتج</button>
+        <button>أضف إلى السلة</button>
       </div>
       <div class="product-card">
-        <img src="product3.jpg" alt="منتج 3">
-        <h3>حصيرة تمرين</h3>
-        <p>300 جنيه</p>
-        <button>أضف للسلة</button>
+        <img src="/photo_2025-04-11_21-54-27.jpg" alt="دمبل قابل للتعديل">
+        <h3>دمبل قابل للتعديل</h3>
+        <div class="price">$199</div>
+        <p>الوزن: 20 كغ</p>
+        <button>تفاصيل المنتج</button>
+        <button>أضف إلى السلة</button>
       </div>
+      <div class="product-card">
+        <img src="/photo_2025-04-11_21-59-39.jpg" alt="باربل">
+        <h3>باربل</h3>
+        <div class="price">$129</div>
+        <p>الوزن: 15 كغ</p>
+        <button>تفاصيل المنتج</button>
+        <button>أضف إلى السلة</button>
+      </div>
+      <!-- أضف المزيد حسب الحاجة -->
     </div>
   </section>
-
-  <section class="cta">
-    <h2>انضم لنا الآن</h2>
-    <p>سجل حسابك لتتسوق بسهولة وتتابع طلباتك</p>
-    <button onclick="window.location.href='login.php'">تسجيل الدخول</button>
+  <section id="products">
+    <h2 class="section-title">منتجات مميزة</h2>
+    <div class="slider-container">
+      <div class="slider" id="productSlider">
+        <!-- منتج 1 -->
+        <div class="product-card">
+          <img src="/photo_2025-04-11_22-13-30.jpg" alt="دمبل قابل للتعديل">
+          <h3>دمبل قابل للتعديل</h3>
+          <div class="price">$199</div>
+          <p>الوزن: 20 كغ</p>
+          <button>تفاصيل</button>
+          <button>أضف إلى السلة</button>
+        </div>
+        <!-- منتج 2 -->
+        <div class="product-card">
+          <img src="/photo_2025-04-11_21-49-22.jpg" alt="باربل">
+          <h3>باربل</h3>
+          <div class="price">$129</div>
+          <p>الوزن: 15 كغ</p>
+          <button>تفاصيل</button>
+          <button>أضف إلى السلة</button>
+        </div>
+        <!-- منتج 3 -->
+        <div class="product-card">
+          <img src="/photo_2025-04-11_17-12-41.jpg" alt="جهاز المشي">
+          <h3>جهاز المشي</h3>
+          <div class="price">$799</div>
+          <p>الوزن: 70 كغ</p>
+          <button>تفاصيل</button>
+          <button>أضف إلى السلة</button>
+        </div>
+        <!-- منتج 4 -->
+        <div class="product-card">
+          <img src="/photo_2025-04-11_21-42-00.jpg" alt="مقعد أوزان">
+          <h3>مقعد أوزان</h3>
+          <div class="price">$249</div>
+          <p>الوزن: 18 كغ</p>
+          <button>تفاصيل</button>
+          <button>أضف إلى السلة</button>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <span class="prev" onclick="scrollSlider(-1)">&#10094;</span>
+        <span class="next" onclick="scrollSlider(1)">&#10095;</span>
+      </div>
+    </div>
+    <a href="#products" class="shop-button">تسوق الآن</a>
   </section>
-
-  <section id="contact">
-    <h2>تواصل معنا</h2>
-    <form style="max-width: 500px; margin: auto;">
-      <input type="text" placeholder="الاسم" required>
-      <input type="email" placeholder="البريد الإلكتروني" required>
-      <textarea placeholder="اكتب رسالتك..." required style="height:100px;"></textarea><br><br>
-      <button type="submit">إرسال</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 جميع الحقوق محفوظة لـ JF Sports</p>
+  <footer id="contact">
+    <p>جميع الحقوق محفوظة &copy; JF Sport 2025</p>
+    <p>
+      <a href="#">سياسة الخصوصية</a> |
+      <a href="#">الشروط والأحكام</a> |
+      <a href="#">تواصل معنا</a>
+    </p>
   </footer>
+  <script>
+    let currentIndex = 0;
+    const slides = document.getElementById('mainSlider');
+    const total = slides.children.length;function changeSlide(direction) {
+  currentIndex = (currentIndex + direction + total) % total;
+  slides.style.transform =` translateX(-${currentIndex * 100}%)`;
+}
 
+setInterval(() => changeSlide(1), 5000);
+let index = 0;
+  const slider = document.getElementById('productSlider');
+  const cards = document.querySelectorAll('.product-card');
+
+  function scrollSlider(direction) {
+    const maxIndex = Math.ceil(cards.length / 2) - 1;
+    index = Math.min(Math.max(index + direction, 0), maxIndex);
+    slider.style.transform =` translateX(-${index * 100}%)`;
+  }
+  </script>
 </body>
 </html>
